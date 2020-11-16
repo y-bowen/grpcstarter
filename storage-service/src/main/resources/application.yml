@@ -1,0 +1,58 @@
+# Spring boot application
+spring:
+  application:
+    name: storage
+  datasource:
+      # root
+    name: test
+    url: jdbc:mysql://localhost:3306/db_storage?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+      # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+      # wall用于防火墙
+    filters: stat,wall
+    maxActive: 20
+    initialSize: 5
+    maxWait: 60000
+    minIdle: 3
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+seata:
+  config:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+    type: nacos
+  registry:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+    type: nacos
+  application-id: ${spring.application.name}
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+
+grpc:
+  server:
+    port: 9095
+  client:
+    GLOBAL:
+      negotiation-type: plaintext
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 30
+    default-fetch-size: 100
+  mapper-locations: classpath*:mapper/*Mapper.xml
+server:
+  port: 8095

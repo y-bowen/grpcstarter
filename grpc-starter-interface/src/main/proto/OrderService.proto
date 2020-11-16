@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package com.middol.grpc;
+
+option java_multiple_files = true;
+// option java_generic_services = true;
+option java_package = "com.middol.grpc";
+option java_outer_classname = "OrderProto";
+
+// The greeting service definition.
+service OrderService {
+  // Sends a greeting
+  rpc Create (OrderRequest) returns (OrderReply) {
+  }
+}
+
+// The request message containing the user's name.
+message OrderRequest {
+  string userId = 1;
+  string commodityCode = 2;
+  int32 count = 3;
+}
+
+// The response message containing the greetings
+message OrderReply {
+  string message = 1;
+}

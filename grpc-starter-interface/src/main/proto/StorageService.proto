@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.middol.grpc;
+
+option java_multiple_files = true;
+// option java_generic_services = true;
+option java_package = "com.middol.grpc";
+option java_outer_classname = "StorageProto";
+
+
+service StorageService {
+  rpc deduct (StorageRequest) returns (StorageReply) {
+  }
+  rpc get (StorageRequest) returns (StorageRequest) {
+  }
+  rpc batchUpdate (StorageRequest) returns (StorageRequest) {
+  }
+  rpc batchDelete (StorageRequest) returns (StorageRequest) {
+  }
+
+}
+
+
+message StorageRequest {
+  int32 id = 1;
+  string commodityCode = 2;
+  int32 count = 3;
+}
+
+message StorageReply {
+  string message = 1;
+}
