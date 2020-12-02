@@ -28,8 +28,8 @@ import javax.sql.DataSource;
 public class MiddolRpcAutoConfiguration {
 
     @Bean
-    @ConditionalOnProperty(prefix = "spring.datasource", name = "type")
-    @ConfigurationProperties(prefix = "spring.datasource")
+    @ConditionalOnProperty(prefix = "spring.seata.datasource", name = "type")
+    @ConfigurationProperties(prefix = "spring.seata.datasource")
     public DruidDataSource druidDataSource() {
         return new DruidDataSource();
     }
