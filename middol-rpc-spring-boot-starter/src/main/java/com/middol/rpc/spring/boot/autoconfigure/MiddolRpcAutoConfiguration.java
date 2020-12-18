@@ -41,13 +41,11 @@ public class MiddolRpcAutoConfiguration {
         return new DataSourceProxy(druidDataSource);
     }
 
-    @Bean
     @GrpcGlobalClientInterceptor
     public ClientTransactionInterceptor clientTransactionInterceptor(){
         return new ClientTransactionInterceptor();
     }
 
-    @Bean
     @GrpcGlobalServerInterceptor
     public ServerTransactionInterceptor serverTransactionInterceptor(){
         return new ServerTransactionInterceptor();
