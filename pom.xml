@@ -19,6 +19,7 @@
         <module>order-service</module>
         <module>storage-service</module>
         <module>middol-rpc-spring-boot-starter</module>
+        <module>mybatis-warp</module>
     </modules>
 
     <dependencyManagement>

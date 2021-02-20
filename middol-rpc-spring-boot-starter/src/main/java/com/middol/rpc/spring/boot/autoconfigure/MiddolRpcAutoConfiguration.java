@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.scope.thread.ThreadScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -49,5 +50,10 @@ public class MiddolRpcAutoConfiguration {
     @GrpcGlobalServerInterceptor
     public ServerTransactionInterceptor serverTransactionInterceptor(){
         return new ServerTransactionInterceptor();
+    }
+
+    @Bean
+    public ThreadScope threadScope(){
+        return new ThreadScope();
     }
 }
